@@ -10,7 +10,7 @@
     "build:js": "rm -fr dist; tsc --sourceMap false --outDir dist/src; babel --config-file ./babel-nodejs.config.js dist/src --out-dir dist/src",
     "build:dev": "webpack",
     "build:prod": "NODE_ENV='production' webpack -p --env production",
-    "build": "yarn build:js; yarn build:prod",
+    "build": "yarn build:js; yarn build:prod; rm dist/index.html",
     "publish": "yarn build:js; npm publish",
     "dev-server": "NODE_ENV='development' webpack-dev-server"
   },
