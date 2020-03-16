@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<title>Aeris JS - Observations Module</title>
+
+	<style>
+	html, body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+    #app {
+        height: 100%;
+        width: 100%;
+    }
+    </style>
+
+    <script src="https://cdn.aerisapi.com/sdk/js/1.3.0/aerisweather.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.aerisapi.com/sdk/js/1.3.0/aerisweather.css">
+
+</head>
+<body>
+
+    <div id="app"></div>
+
+<script>
+window.addEventListener('load', () => {
+
+    // Update with your Aeris account access keys
+    const aeris = new AerisWeather('<%= htmlWebpackPlugin.options.aeris.clientId %>', '<%= htmlWebpackPlugin.options.aeris.clientSecret %>');
+
+    aeris.apps().then((apps) => {
+        const app = new apps.InteractiveMapApp('#app', {
+            map: {
+				layers: 'observations',
+                map: {
+                    zoom: 5
+                }
+            },
+            panels: {
+                layers: {
+                    buttons: []
+                }
+            }
+        });
+
+        // Add an instance of your module to the map application
+        app.modules.add(new Observations());
+
+    });
+
+});
+</script>
+
+</body>
+</html>
