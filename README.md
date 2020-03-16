@@ -5,6 +5,8 @@ Starting with version 1.3.0 of the [Aeris Javascript SDK](https://www.aerisweath
 
 We've created this Observations module as an example for you to reference when creating your own custom modules for your mapping applications. Feel free to use this module in your own projects, whether you're using our [precompiled SDK scripts](https://www.aerisweather.com/support/docs/toolkits/aeris-js-sdk/getting-started/script-usage/) or [importing our NPM package](https://www.aerisweather.com/support/docs/toolkits/aeris-js-sdk/getting-started/module-usage/) into your Javascript projects.
 
+![AerisWeather JS - Observations Module](docs/img/awxjs-observations-infopanel.png)
+
 ## Using the Module
 
 The method for adding the Observations module to your project depends on how your project is setup, either as a module-based/NodeJS project or using precompiled scripts in an HTML file. Follow the appropriate examples below for your project's use case.
@@ -18,10 +20,14 @@ If you are developing your own JavaScript application using a NodeJS server or u
 The following is an example of importing and using the project source files in your Javascript project:
 
 ```javascript
+import AerisWeather from '@aerisweather/javascript-sdk/dist/AerisWeather';
 import InteractiveMapApp from '@aerisweather/javascript-sdk/dist/apps/InteractiveMapApp';
 import Observations from 'path/to/awxjs-observations-module/dist/src/Observations';
 
+const aeris = new AerisWeather('CLIENT_ID', 'CLIENT_SECRET');
+
 const app = new apps.InteractiveMapApp('#app', {
+    account: aeris.account(),
     // config options...
 });
 app.on('ready', () => {
