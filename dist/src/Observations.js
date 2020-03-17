@@ -232,11 +232,7 @@ function (_super) {
   Observations.prototype.onInit = function () {
     var _this = this;
 
-    var request = this.account.api({
-      server: 'https://api-staging.aerisapi.com',
-      client: null
-    });
-    request.endpoint('observations').action(_ApiRequest.ApiAction.WITHIN).lod(this.map.getZoom()).filter('allstations,allownosky').sort('id:1').limit(1000);
+    var request = this.account.api().endpoint('observations').action(_ApiRequest.ApiAction.WITHIN).lod(this.map.getZoom()).filter('allstations,allownosky').sort('id:1').limit(1000);
     this._request = request;
     this._weatherProp = 'temps';
     this._units = this.map.isMetric ? _units.Units.Metric : _units.Units.Imperial;

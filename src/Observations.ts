@@ -180,11 +180,7 @@ class Observations extends MapSourceModule {
 	}
 
 	onInit() {
-		const request = this.account.api({
-			server: 'https://api-staging.aerisapi.com',
-			client: null
-		});
-		request
+		const request = this.account.api()
 			.endpoint('observations')
 			.action(ApiAction.WITHIN)
 			.lod(this.map.getZoom())
