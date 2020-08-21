@@ -3,9 +3,9 @@
 
 
 "@aerisweather/javascript-sdk@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@aerisweather/javascript-sdk/-/javascript-sdk-1.3.0.tgz#d347a0349e65f802d44bd0a38ebd7bac9f3a142b"
-  integrity sha512-Zayr+9SDUCCQGL+roNZyNn9WtY7GeoL8R/Lhiq31qzLgtfZse+Lv05eUrwUAKDfOuHLvZLW2obr1qwGzNELPdw==
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@aerisweather/javascript-sdk/-/javascript-sdk-1.3.2.tgz#fb3945520c12c917f33054f42d2a8a6dc77557bc"
+  integrity sha512-qKd6+hjg74P4fsnQGDXbT55+t91t0MnFmHN7H+nFErvP+pF8luOMiPGRhn7RdZKHIhYfMgK7BRJiTjr8pNQwvw==
   dependencies:
     axios "^0.18.0"
     date-fns "^2.8.0"
@@ -1878,9 +1878,9 @@ cyclist@^1.0.1:
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
 date-fns@^2.8.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.9.0.tgz#d0b175a5c37ed5f17b97e2272bbc1fa5aec677d2"
-  integrity sha512-khbFLu/MlzLjEzy9Gh8oY1hNt/Dvxw3J6Rbc28cVoYWQaC1S3YI4xwkF9ZWcjDLscbZlY9hISMr66RFzZagLsA==
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.15.0.tgz#424de6b3778e4e69d3ff27046ec136af58ae5d5f"
+  integrity sha512-ZCPzAMJZn3rNUvvQIMlXhDr4A+Ar07eLeGsGREoWU19a3Pqf5oYa+ccd+B3F6XVtQY6HANMFdOQ8A+ipFnvJdQ==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"

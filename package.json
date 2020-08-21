@@ -1,7 +1,7 @@
 {
   "name": "awxjs-observations-module",
   "moduleName": "Observations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "author": "Nicholas Shipes",
   "homepage": "https://www.aerisweather.com",
