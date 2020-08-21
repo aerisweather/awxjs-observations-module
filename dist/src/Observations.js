@@ -100,7 +100,7 @@ function (_super) {
     get: function () {
       return 'observations';
     },
-    enumerable: true,
+    enumerable: false,
     configurable: true
   });
 
