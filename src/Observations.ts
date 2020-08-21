@@ -120,6 +120,8 @@ class Observations extends MapSourceModule {
 			value: this.id,
 			title: 'Observations',
 			filter: true,
+			multiselect: false,
+			reloadOnChange: false,
 			segments: {
 				groups: [{
 					id: 'property',
@@ -180,10 +182,14 @@ class Observations extends MapSourceModule {
 	}
 
 	onInit() {
+		const props = ['temps', 'feelslike', 'winds', 'dewpt', 'humidity', 'precip', 'sky'].map((type) => (
+			`ob.${getObsProp(type)},ob.${getObsProp(type, true)}`
+		));
 		const request = this.account.api()
 			.endpoint('observations')
 			.action(ApiAction.WITHIN)
 			.lod(this.map.getZoom())
+			.fields(`id,loc,ob.dateTimeISO,ob.timestamp,${props.join(',')}}`)
 			.filter('allstations,allownosky')
 			.sort('id:1')
 			.limit(1000);
@@ -194,16 +200,23 @@ class Observations extends MapSourceModule {
 		this.map.on('zoom', () => {
 			this._request.lod(this.map.getZoom());
 		}).on('change:units', (e: any) => {
-			console.log('app units changed', e.data);
-			// this._units =
+			// console.log('app units changed', e.data);
 		});
 
 		this.app.on('layer:change:option', (e: any) => {
-			const { id, value: { property, units } } = e.data || {};
+			const { id, source, value: { filters: { property, units }}} = e.data || {};
 			if (id === this.id) {
 				this._weatherProp = property;
 				this._units = units;
-				this._request.fields(`id,loc,ob.dateTimeISO,ob.timestamp,ob.${getObsProp(property)},ob.${getObsProp(property, true)}`);
+
+				let update = false;
+				if (source) {
+					if (update) {
+						source.reload();
+					} else {
+						source.render();
+					}
+				}
 			}
 		});
 	}
