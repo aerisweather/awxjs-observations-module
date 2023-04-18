@@ -1,6 +1,7 @@
-import MapSourceModule from '@aerisweather/javascript-sdk/dist/modules/MapSourceModule';
-export declare type ObservationsOpts = {};
-declare class Observations extends MapSourceModule {
+import MapSourceModule, { MapSourceModuleOptions } from '@aerisweather/javascript-sdk/dist/modules/MapSourceModule';
+export interface ObservationsOpts extends MapSourceModuleOptions {
+}
+declare class Observations extends MapSourceModule<ObservationsOpts> {
     private _request;
     private _weatherProp;
     private _units;

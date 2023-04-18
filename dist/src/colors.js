@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.getColorRamp = exports.colorForValue = exports.weather = void 0;
-var weather = {
+const weather = {
   temps: {
     '-60': '#8f00ca',
     '-50': '#630078',
@@ -112,15 +112,15 @@ var weather = {
 exports.weather = weather;
 weather.feelslike = weather.temps;
 
-var colorForValue = function (ramp, value) {
-  var color = null;
+const colorForValue = (ramp, value) => {
+  let color = null;
   if (!ramp) return null;
-  var sortedKeys = Object.keys(ramp).map(function (el) {
+  const sortedKeys = Object.keys(ramp).map(el => {
     return parseFloat(el);
-  }).sort(function (a, b) {
+  }).sort((a, b) => {
     return a - b;
   });
-  sortedKeys.forEach(function (key) {
+  sortedKeys.forEach(key => {
     if (key <= value) {
       color = ramp[key];
     }
@@ -130,7 +130,7 @@ var colorForValue = function (ramp, value) {
 
 exports.colorForValue = colorForValue;
 
-var getColorRamp = function (type) {
+const getColorRamp = type => {
   return weather[type];
 };
 
