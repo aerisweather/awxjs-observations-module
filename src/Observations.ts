@@ -1,5 +1,6 @@
-import MapSourceModule from '@aerisweather/javascript-sdk/dist/modules/MapSourceModule';
-import ApiRequest, { ApiAction } from '@aerisweather/javascript-sdk/dist/network/api/ApiRequest';
+import MapSourceModule, { MapSourceModuleOptions } from '@aerisweather/javascript-sdk/dist/modules/MapSourceModule';
+import ApiRequest from '@aerisweather/javascript-sdk/dist/network/api/ApiRequest';
+import { ApiAction } from '@aerisweather/javascript-sdk/dist/types/request.enum';
 import { get, isset } from '@aerisweather/javascript-sdk/dist/utils';
 import { Units, formatMeasurement } from '@aerisweather/javascript-sdk/dist/utils/units';
 import { isLight } from '@aerisweather/javascript-sdk/dist/utils/color';
@@ -41,9 +42,9 @@ const shouldAllowMarker = (type: string, value: number): boolean => {
 	return true;
 };
 
-export type ObservationsOpts = {};
+export interface ObservationsOpts extends MapSourceModuleOptions {};
 
-class Observations extends MapSourceModule {
+class Observations extends MapSourceModule<ObservationsOpts> {
 	private _request: ApiRequest;
 	private _weatherProp: string;
 	private _units: Units;
@@ -203,9 +204,10 @@ class Observations extends MapSourceModule {
 			// console.log('app units changed', e.data);
 		});
 
-		this.app.on('layer:change:option', (e: any) => {
-			const { id, source, value: { filters: { property, units }}} = e.data || {};
+		this.app.on('layer:change', (e: any) => {
+			const { id, source, value } = e.data || {};
 			if (id === this.id) {
+				const { property, units } = value;
 				this._weatherProp = property;
 				this._units = units;
 
